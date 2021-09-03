@@ -15,7 +15,6 @@ eq() {
 	return 1
 }
 UACC=""
-
 ';
 
 while (<>) {
@@ -33,12 +32,12 @@ while (<>) {
 
 	for $_ (keys %props) {
 		# Match subsystem...
-		if ($_ eq 'SUBSYSTEM==') {
+		if (m{SUBSYSTEM(S?)==}) {
 			push @conds, "eq \"\$SUBSYSTEM\" \Q$props{$_}\E";
 		}
 
 		# Match kernel device name...
-		elsif ($_ eq 'KERNEL(S?)==') {
+		elsif (m{KERNEL(S?)==}) {
 			# Pattern to match
 			$pat = "\Q$props{$_}\E";
 			# KERNEL matches whole name, KERNELS matches substring
@@ -55,8 +54,12 @@ while (<>) {
 			# Udev names de id/vendor, id/product, etc. files as idVendor and idProduct. Turn these into the filenames.
 			$fname = $1; $fname =~ s@([a-z])([A-Z])@$1/\l$2@g;
 			# Read file contents and match.
-			push @conds, sprintf('{ read -r B < "/sys/$DEVPATH"/%s; eq "$B" %s; }',
+			push @conds, sprintf('read -r B < "/sys/$DEVPATH"/device/%s && eq "$B" %s',
 				"\Q$fname\E", "\Q$props{$_}\E");
+		}
+
+		else {
+			print STDERR "Unused: $_\n";
 		}
 	}
 
