@@ -1,0 +1,44 @@
+#!/bin/sh
+# Queries plaintext files on {/etc/udev,/usr/lib/udev}/hwdb.d
+# Adapted from leah@vuxu.org's modules-load script.
+
+# TODO: Strictly validate structure of the files.
+# TODO: optimize (rewrite in C? Rust?)
+
+_rulenv=$(find -L /etc/udev/hwdb.d /usr/lib/udev/hwdb.d \
+	-maxdepth 1 -name '*.hwdb' -printf '%p %P\n' 2>/dev/null |
+	# Load each basename only once.
+	sort -k2 -s | uniq -f1 | cut -d' ' -f1 | {
+	set --
+	while read -r file; do
+		MATCHED=''
+		while IFS='' read -r line; do
+
+			# No comments
+			[ "${line##'#'*}" ] || continue
+
+			# Empty lines delimit a modalias
+			if [ ! "$line" ]; then
+				MATCHED=''
+
+			# Lines starting with a space are relevant environment variables,
+			# append to big printf at end
+			elif [ "${line# *}" ]; then
+			       [ ! "$MATCHED" ] || set -- "$@" "${line#' '}"
+
+			# Non-empty lines without space are modaliases to be matched.
+			elif case "$MODALIAS" in ($line) : ;; (*) ! : ;; esac; then
+				MATCHED='x'
+
+			fi
+		done < "$file"
+	done; printf '%s\n' "$@"; }
+)
+
+IFS='
+'
+
+export $_rulenv > /dev/null
+
+# Bernstein chaining
+[ "$#" -gt 0 ] && exec "$@"
