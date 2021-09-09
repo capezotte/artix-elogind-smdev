@@ -5,6 +5,8 @@
 # TODO: Strictly validate structure of the files.
 # TODO: optimize (rewrite in C? Rust?)
 
+IFS=''
+
 _rulenv=$(find -L /etc/udev/hwdb.d /usr/lib/udev/hwdb.d \
 	-maxdepth 1 -name '*.hwdb' -printf '%p %P\n' 2>/dev/null |
 	# Load each basename only once.
@@ -42,3 +44,5 @@ export $_rulenv > /dev/null
 
 # Bernstein chaining
 [ "$#" -gt 0 ] && exec "$@"
+
+unset IFS
