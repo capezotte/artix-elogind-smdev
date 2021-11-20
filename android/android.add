@@ -1,0 +1,45 @@
+#!/bin/sh
+(
+set -f
+
+[ "$SUBSYSTEM" = usb ] || exit
+[ "$PRODUCT" ] || exit
+[ "$DEVTYPE" = usb_device ] || exit
+
+IFS=/ read -r idVendor idProduct _ <<EOF
+$PRODUCT
+EOF
+
+# "Avoid printers, hubs, etc."
+read -r bDeviceClass < "/sys/$DEVPATH"/bDeviceClass
+[ "$bDeviceClass" != 09 ] || exit
+
+# Use grep since it's almost guaranteed to be faster than shell for pattern lookup
+grep -E "^$idVendor:[?0-9a-fA-F]{4}:" /etc/smdev/androidtab | while IFS=: read -r _ product_pattern actions; do
+	# match product
+	case $idProduct in
+	($product_pattern) : ;;
+	(*) continue ;;
+	esac
+
+	# Perform actions
+	IFS=,
+	for action in $actions; do case $action in
+	# Grant user access (/usr/lib/elogind-uaccess-command "/dev/$DEVNAME" for elogind).
+	(user) chmod 666 "/dev/$DEVNAME" ;;
+	# Fastboot symlink
+	(fastboot) ln -sf "/dev/$DEVNAME" /dev/android_fastboot ;;
+	# ADB symlink
+	(adb) ln -sf "/dev/$DEVNAME" /dev/android_adb ;;
+	(*) printf '%s: unrecognized action: %s\n' >&2 "$0" "$action" ;;
+	esac; done
+
+	# The android and android%n symlink
+	number=0
+	while [ -c "/dev/android$number" ]; do : $((number+=1)); done
+	ln -sf "/dev/$DEVNAME" "/dev/android"
+	ln -sf "/dev/$DEVNAME" "/dev/android$number"
+
+	exit
+done
+)

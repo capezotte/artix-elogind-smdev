@@ -1,0 +1,541 @@
+# Generated from: https://github.com/M0Rf30/android-udev-rules
+#
+# This file is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program. If not, see <http://www.gnu.org/licenses/>.
+# Skip testing for android devices if device is not add, or usb
+#
+#	Acer
+#		Iconia Tab A1-830
+0502:3604:adb,user
+#		Iconia Tab A210 (33cc=normal,33cb=debug)
+0502:33cb:adb,user
+#		Iconia Tab A500
+0502:3325:adb,user
+#		Liquid (3202=normal,3203=debug)
+0502:3203:user
+#	Actions Semiconductor Co., Ltd
+#		Denver TAD 70111
+10d6:0c02:adb,user
+#	ADVANCE (Need product specific rules)
+#		S5
+0a5c:e681:adb,user
+#	Amazon Lab126
+#		Amazon Kindle Fire
+1949:0006:adb,user
+#	Archos
+#		43
+0e79:1417:adb,user
+#		101
+0e79:1411:adb,user
+#		101 xs
+0e79:1549:adb,user
+#       Ascom
+1768:0007:adb,user
+1768:000e:adb,user
+1768:4ee7:adb,user
+1768:0013:adb,user
+1768:0011:adb,user
+#	ASUSTeK
+#		False positive - accessory
+0b05:1???:user
+#		Zenphone 2 (ZE500CL) (7770=adb 7773=mtp,adb 7777=ptp,adb  7775=rndis,adb,mass_storage 5F03=mtp,adb,pclink,mass_storage 5F07=ptp,adb,pclink 5F05=rndis,adb,pclink,mass_storage
+0b05:7770:adb,user
+0b05:7773:adb,user
+0b05:7777:adb,user
+0b05:7775:adb,user
+0b05:5F03:adb,user
+0b05:5F07:adb,user
+0b05:5F05:adb,user
+#		Zenphone 4 (581f=mtp,adb 583f=rndis,adb)
+0b05:581f:adb,user
+0b05:583f:adb,user
+#		Zenphone 5 (4c90=normal,4c91=debug,4daf=Fastboot)
+0b05:4c91:adb,user
+0b05:4daf:user
+#		Tegra APX
+0b05:7030:adb,user
+#	Azpen Onda
+1f3a:????:user
+#	BQ
+#		Aquaris 4.5
+2a47:0c02:adb,user
+2a47:2008:adb,user
+#	Castles
+#		Saturn1000-E
+0ca6:a051:user
+#	Dell (Need product specific rules)
+#ATTR{idVendor}=="413c", ENV{adb_user}="yes"
+#	Essential
+#		Essential PH-1
+2e17:c009:adb,user
+#	Fairphone 1 (see Hisense 109b)
+#	Fairphone 2 (f005=tether, f00e=rndis, 90de=charge, 90dc=charge,adb f000=MTP, 9039=MTP,adb, 904d=PTP, 904e=PTP,adb, 9015=storage,adb, 9024=rndis,adb) 90bb=qualcom midi+adb
+2ae5:9015:adb,user
+2ae5:9039:adb,user
+2ae5:904e:adb,user
+2ae5:90dc:adb,user
+2ae5:90bb:adb,user
+#	Foxconn
+#		Commtiva Z71, Geeksphone One
+0489:c001:adb,user
+#	Fujitsu/Fujitsu Toshiba
+04c5:????:user
+#	Fuzhou Rockchip Electronics
+#		Mediacom Smartpad 715i
+2207:0000:adb,user
+#		Ubislate 7Ci
+2207:0010:adb,user
+#	Garmin-Asus
+091e:????:user
+#	Google
+#		Nexus, Pixel, Pixel XL, Pixel 2, Pixel 2XL (4ee1=mtp, 4ee2=mtp,adb 4ee3=rndis, 4ee4=rndis,adb 4ee5=ptp, 4ee6=ptp,adb 4ee7=adb 4ee8=midi, 4ee9=midi,adb 2d00=accessory 2d01=accessory,adb 2d03=audio_source,adb 2d05=accessory,audio_source,adb)
+#		See https://android.googlesource.com/device/google/wahoo/+/master/init.hardware.usb.rc
+#		OnePlus 6, 4ee1=charging, 4ee2=MTP+debug, 4ee6=PTP+debug, 4ee7=charging+debug
+#		Pico i.MX7 Dual Development Board 4ee7=debug
+#		Yandex Phone 4ee7=debug
+18d1:4ee0:adb,user
+18d1:4ee2:adb,user
+18d1:4ee4:adb,user
+18d1:4ee6:adb,user
+18d1:4ee7:adb,user
+18d1:4ee9:adb,user
+#		Pixel C Tablet
+18d1:5201:fastboot,user
+18d1:5203:adb,user
+18d1:5208:adb,user
+18d1:2d00:adb,user
+18d1:2d01:adb,user
+18d1:2d03:adb,user
+18d1:2d05:adb,user
+#		Nexus 7
+18d1:4e42:adb,user
+18d1:4e40:adb,user
+#		Nexus 5, Nexus 10
+18d1:4ee1:adb,user
+#		Nexus S (4e22=mass_storage,adb 4e24=rndis,adb)
+#		See https://android.googlesource.com/device/samsung/crespo/+/android-4.1.2_r2.1/init.herring.usb.rc
+18d1:4e22:adb,user
+18d1:4e24:adb,user
+18d1:4e20:adb,user
+#		Galaxy Nexus, Galaxy Nexus (GSM)
+18d1:4e30:adb,user
+#		Nexus One (4e11=normal,4e12=debug,0fff=debug)
+18d1:4e12:adb,user
+18d1:0fff:adb,user
+#		Recovery adb entry for Nexus Family (orig d001, OP3 has 18d1:d002)
+18d1:d00?:adb,user
+#		Generic and unspecified debug interface (test after d00?)
+18d1:d00d:adb,user
+#	Other vendors that also used duplicated Google's idVendor code follows:
+#	IDEA XDS-1078 (debug=2c11)
+18d1:2c11:adb,user
+#	Haier
+201e:????:user
+#	Hisense (includes Fairphone 1)
+109b:????:user
+#	Honeywell/Foxconn
+#		D70e
+0c2e:0ba3:adb,user
+#	HTC
+#		fastboot mode enabled
+0bb4:0fff:adb,user
+#		ADP1, Dream, G1, HD2, Magic, Tatoo (0c01=mass_storage)
+0bb4:0c02:adb,user
+#		ChaCha
+0bb4:0cb2:adb,user
+#		Desire (Bravo)
+0bb4:0c87:adb,user
+#		Desire HD
+0bb4:0ca2:adb,user
+#		Desire S (Saga)
+0bb4:0cab:adb,user
+#		Desire Z
+0bb4:0c91:adb,user
+#		Evo Shift
+0bb4:0ca5:adb,user
+#		Hero H2000
+0bb4:0001:adb,user
+#		Hero (GSM), Desire
+0bb4:0c99:adb,user
+#		Hero (CDMA)
+0bb4:0c9a:adb,user
+#		Incredible
+0bb4:0c9e:adb,user
+#		Incredible rev 0002
+0bb4:0c8d:adb,user
+#		MyTouch 4G
+0bb4:0c96:adb,user
+#		One (m7) && One (m8)
+0bb4:0c93:adb,user
+#		Sensation
+0bb4:0f87:adb,user
+0bb4:0ff0:user
+#		One V
+0bb4:0ce5:adb,user
+#		One X
+0bb4:0cd6:adb,user
+#		Slide
+0bb4:0e03:adb,user
+#		Vision
+0bb4:0c91:adb,user
+#		Wildfire
+0bb4:0c8b:adb,user
+#		Wildfire S
+0bb4:0c86:adb,user
+#		Zopo ZP900, Fairphone
+0bb4:0c03:adb,user
+#		Zopo C2
+0bb4:2008:user
+#	Huawei
+#		IDEOS
+12d1:1038:adb,user
+#		U8850 Vision
+12d1:1021:adb,user
+#		HiKey adb
+12d1:1057:adb,user
+#		HiKey usbnet
+12d1:1050:adb,user
+#		Honor 6
+12d1:103a:adb,user
+12d1:1051:user
+#		MediaPad M2-A01L
+12d1:1052:adb,user
+#		MediaPad T3
+12d1:107d:adb,user
+#		P10 Lite
+12d1:107e:adb,user
+#		Watch
+12d1:1c2c:adb,user
+#		Mate 9
+12d1:107e:adb,user
+#	Intel
+#		Geeksphone Revolution
+8087:0a16:adb,user
+#		Chuwi Hi 10 Pro (HQ64)
+8087:2a65:adb,user
+8087:07ef:adb,user
+#		Asus ZenFone 2 (ADB Sideload in TWRP Recovery)
+8087:0a5d:adb,user
+#		Reference Boards using kernelflinger
+#		See https://github.com/intel/kernelflinger/blob/master/libefiusb/usb.c#L56
+8087:09ef:adb,user
+#	IUNI
+#		U3
+271d:bf39:adb,user
+#	K-Touch
+24e3:????:user
+#	KT Tech
+2116:????:user
+#	Kyocera
+#ATTR{idVendor}=="0482", ENV{adb_user}="yes"
+#	Lenovo
+17ef:????:user
+#	LeTv (LeECo)
+#		LEX720 LeEco Pro3 6GB (610c=normal,610d=debug, 610b=camera)
+2b0e:610d:adb,user
+#	LG
+#		Ally, Vortex, P500, P500h (618f=mass_storage)
+1004:618e:adb,user
+#		G2 D802
+1004:61f1:adb,user
+#		G2 D803
+1004:618c:adb,user
+#		G2 D803 rogers
+1004:631f:adb,user
+#		G2 mini D620r (PTP)
+1004:631d:adb,user
+#		G3 D855
+1004:633e:adb,user
+#		Optimus LTE
+1004:6315:adb,user
+1004:61f9:user
+#		Optimus One
+1004:61c5:adb,user
+#		Swift GT540
+1004:61b4:adb,user
+#		P500 CM10
+1004:61a6:adb,user
+#		4X HD P880
+1004:61f9:adb,user
+#		L90 D410
+1004:6300:adb,user
+#	Meizu
+#		MX6
+2a45:0c02:adb,user
+#	Micromax
+#		P702
+2a96:201d:adb,user
+#	Microsoft
+#		Surface Duo
+045e:0c26:adb,user
+#	Motorola
+#		CLIQ XT/Quench
+22b8:2d66:adb,user
+#		Defy/MB525
+22b8:428c:adb,user
+#		Droid
+22b8:41db:adb,user
+#		Xoom ID 1
+22b8:70a8:adb,user
+#		Xoom ID 2
+22b8:70a9:adb,user
+#		Razr XT912
+22b8:4362:adb,user
+#		Moto XT1052
+22b8:2e83:adb,user
+#		Moto E/G
+22b8:2e76:adb,user
+#		Moto E/G (Dual SIM)
+22b8:2e80:adb,user
+#		Moto E/G (Global GSM)
+22b8:2e82:adb,user
+#		Moto x4
+22b8:2e81:adb,user
+#		Droid Turbo 2
+22b8:2ea4:adb,user
+#	MTK (MediaTek Inc)
+#		Umidigi F1
+0e8d:201c:adb,user
+#	NEC
+0409:????:user
+#	Nextbit
+2c3f:????:user
+#	Nokia X
+0421:????:user
+#	Nokia 3
+2e04:????:user
+#	Nook (Barnes & Noble)
+2080:????:user
+#	Nvidia
+#		Audi SDIS Rear Seat Entertainment Tablet
+#		Folio
+0955:7000:user
+0955:7100:user
+#		SHIELD Tablet (debug)
+0955:cf05:adb,user
+0955:cf09:adb,user
+#		Shield TV
+0955:b442:user
+#	Oculus
+2833:????:user
+#	OnePlus(Oreo)
+#		OnePlus 6, 4ee1=charging, 4ee2=MTP+debug, 4ee6=PTP+debug, 4ee7=charging+debug
+2a70:4ee2:adb,user
+2a70:4ee6:adb,user
+2a70:4ee7:adb,user
+#		OnePlus 3T with Oreo MIDI mode 90bb=adb+midi, 9011=MTP, 904e=PTP
+2a70:90bb:adb,user
+2a70:9011:adb,user
+2a70:904e:adb,user
+#	Oppo
+#		Find 5 (2767=debug)
+22d9:2767:adb,user
+22d9:2764:user
+#	OTGV
+2257:????:user
+#	Pantech (SK Teletech Co, Ltd.)
+10a9:????:user
+#	Parrot SA (Car HUD)
+19cf:????:user
+#	Pegatron
+1d4d:????:user
+#	Philips (and NXP)
+0471:????:user
+#	Pico
+2d40:????:user
+#	PMC-Sierra, (Panasonic Mobile communications, Matsushita)
+04da:????:user
+#	Point Mobile
+#		PM90
+2a48:5101:user
+#	Qualcomm (Wearners also 05c6)
+#		Geeksphone Zero
+05c6:9025:adb,user
+#		OnePlus One
+05c6:676?:adb,user
+#		OnePlus Two
+05c6:9011:adb,user
+#		OnePlus 3
+05c6:900e:adb,user
+#		OnePlus 3T
+05c6:676c:adb,user
+#		Snapdragon, OnePlus 3T w/ Oreo MIDI mode (90bb=adb,midi, 9011=MTP, 904e=PTP)
+#		Xiaomi A1 (90bb=midi+adb)
+05c6:90bb:adb,user
+#		OnePlus 5 / 6 / 6T
+05c6:9011:adb,user
+#		OnePlus 6 / Asia
+05c6:f003:adb,user
+#	Razer USA, Ltd.
+#		Razer Phone 2
+1532:9050:adb,user
+#	Research In Motion, Ltd.
+#		BlackBerry DTEK60
+0fca:8042:user
+#	Samsung
+#		False positive printer
+04e8:3???:user
+#		Galaxy i5700
+04e8:681c:adb,user
+#		Galaxy i5800 (681c=debug,6601=fastboot,68a0=mediaplayer)
+04e8:681c:adb,user
+04e8:6601:user
+04e8:68a9:user
+#		Galaxy i7500
+04e8:6640:adb,user
+#		Galaxy i9000 S, i9300 S3
+04e8:6601:adb,user
+04e8:685d:user
+04e8:68c3:user
+#		Galaxy Ace (S5830) "Cooper"
+04e8:689e:adb,user
+#		Galaxy Tab
+04e8:6877:adb,user
+#		Galaxy Nexus (GSM) (6860=mtp,adb 6864=rndis,adb 6866=ptp,adb)
+04e8:6860:adb,user
+04e8:6864:adb,user
+04e8:6866:adb,user
+#		Galaxy Core, Tab 10.1, i9100 S2, i9300 S3, N5100 Note (8.0), Galaxy S3 SHW-M440S 3G (Korea only)
+04e8:6860:adb,user
+04e8:685e:adb,user
+#		Galaxy i9300 S3
+04e8:6866:user
+#		Galaxy S4 GT-I9500
+04e8:685d:adb,user
+#	Sharp
+04dd:????:user
+#	SK Telesys
+1f53:????:user
+#	Sonim
+1d9c:????:user
+#	Sony
+054c:????:user
+#	Sony Ericsson
+#		Xperia X10 mini (3137=mass_storage)
+0fce:2137:adb,user
+#		Xperia X10 mini pro (3138=mass_storage)
+0fce:2138:adb,user
+#		Xperia X8 (3149=mass_storage)
+0fce:2149:adb,user
+#		Xperia X12 (e14f=mass_storage)
+0fce:614f:adb,user
+#		Xperia Arc S
+0fce:414f:adb,user
+#		Xperia Neo V (6156=debug,0dde=fastboot)
+0fce:6156:adb,user
+0fce:0dde:user
+#		Xperia S
+0fce:5169:adb,user
+#		Xperia SP
+0fce:6195:adb,user
+#		Xperia L
+0fce:5192:adb,user
+#		Xperia Mini Pro
+0fce:0166:adb,user
+#		Xperia V
+0fce:0186:adb,user
+#		Xperia Acro S
+0fce:5176:adb,user
+#		Xperia Z1 Compact
+0fce:51a7:adb,user
+#		Xperia Z2
+0fce:51ba:adb,user
+#		Xperia Z3
+0fce:01af:adb,user
+#		Xperia Z3 Compact
+0fce:01bb:adb,user
+#		Xperia Z3+ Dual
+0fce:51c9:adb,user
+#		Xperia XZ
+0fce:51e7:adb,user
+#		Xperia XZ1 Compact
+0fce:01f4:adb,user
+#		Xperia XZ2 Compact
+0fce:b00b:adb,user
+#		Xperia 5 II
+0fce:020d:adb,user
+#	Spectralink
+1973:????:user
+#	Spreadtrum
+1782:????:user
+#	T & A Mobile Phones
+#		Alcatel 1 2019 5033F
+1bbb:0c01:adb,user
+#		Alcatel OT991D
+1bbb:00f2:adb,user
+#		Alcatel OT6012A
+1bbb:0167:adb,user
+#	Teleepoch
+2340:????:user
+#	Texas Instruments UsbBoot
+0451:d00f:user
+0451:d010:user
+#	Toshiba
+0930:????:user
+#	Unitech Electronics
+#		EA630 (96e1=normal,96e7=debug)
+2e8e:96e7:adb,user
+#	Wileyfox
+2970:????:user
+#	XiaoMi
+#		Mi2A
+2717:904e:adb,user
+2717:9039:adb,user
+#		Mi3
+2717:0368:adb,user
+#		RedMi 1S WCDMA (MTP+Debug)
+2717:1268:adb,user
+#		RedMi / RedMi Note WCDMA (MTP+Debug)
+2717:1248:adb,user
+#		RedMi 1S / RedMi / RedMi Note WCDMA (PTP+Debug)
+2717:1218:adb,user
+#		RedMi 1S /RedMi / RedMi Note WCDMA (Usb+Debug)
+2717:1228:adb,user
+#		RedMi / RedMi Note 4G WCDMA (MTP+Debug)
+2717:1368:adb,user
+#		RedMi / RedMi Note 4G WCDMA (PTP+Debug)
+2717:1318:adb,user
+#		RedMi / RedMi Note 4G WCDMA (Usb+Debug)
+2717:1328:adb,user
+#		Mi Mix / A1 (ff88=rndis+adb, ff18=ptp+adb, ff48=mtp+adb, ff28=storage+adb)
+2717:ff88:adb,user
+2717:ff18:adb,user
+2717:ff48:adb,user
+2717:ff28:adb,user
+#		RedMi / RedMi Note 4G CDMA (Usb+Debug) / Mi4c / Mi5
+2717:ff68:adb,user
+#		RedMi 7
+2717:ff40:adb,user
+#		RedMi Note 8T
+2717:ff08:adb,user
+#		RedMi 8 Pro
+2717:ff48:adb,user
+#	Yota
+#		YotaPhone2 (f003=normal,9139=debug)
+2916:9139:adb,user
+#	YU
+1ebf:????:user
+#	Zebra
+#		TC55
+05e0:2101:adb,user
+#		TC72
+05e0:2106:adb,user
+#	ZTE
+#		Blade (1353=normal,1351=debug)
+19d2:1351:adb,user
+#		Blade S (Crescent, Orange San Francisco 2) (1355=normal,1354=debug)
+19d2:1354:adb,user
+#		P685M LTE modem
+19d2:1275:user
+#	ZUK
+2b4c:????:user
