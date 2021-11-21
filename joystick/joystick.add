@@ -1,0 +1,8 @@
+#!/bin/sh
+(
+[ "$SUBSYSTEM" = input ] || exit
+
+set -- "/sys/$DEVPATH/device/js"*
+
+[ -e "$1" ] && chmod 666 "/dev/$DEVNAME"
+)
